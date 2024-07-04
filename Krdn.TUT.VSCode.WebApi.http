@@ -1,0 +1,6 @@
+@Krdn.TUT.VSCode.WebApi_HostAddress = http://localhost:5166
+
+GET {{Krdn.TUT.VSCode.WebApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
