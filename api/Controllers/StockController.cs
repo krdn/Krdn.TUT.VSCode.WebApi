@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-using Krdn.TUT.VSCode.WebApi.Data;
+using api.Data;
 
 using Microsoft.AspNetCore.Mvc;
 
-namespace Krdn.TUT.VSCode.WebApi.Controllers
+namespace api.Controllers
 {
     [Route("api/[controller]")] // [Route("api/stock")]
     [ApiController]

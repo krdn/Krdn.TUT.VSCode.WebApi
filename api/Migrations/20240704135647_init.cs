@@ -1,9 +1,10 @@
 ﻿using System;
+
 using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace Krdn.TUT.VSCode.WebApi.Migrations
+namespace api.Migrations
 {
     /// <inheritdoc />
     public partial class init : Migration

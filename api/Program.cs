@@ -1,4 +1,4 @@
-using Krdn.TUT.VSCode.WebApi.Data;
+using api.Data;
 
 using Microsoft.EntityFrameworkCore;
 
