@@ -68,6 +68,8 @@ Visual Studio Code에서는 REST Client 확장을 사용하여 `.http` 파일을
 3. **HTTP 요청 실행**:
    - 요청 줄 위에 있는 "Send Request" 링크를 클릭하면 해당 요청이 실행됩니다.
    - 응답은 Visual Studio Code 내의 새로운 탭에 표시됩니다.
+   - ![image](https://github.com/krdn/Krdn.TUT.VSCode.WebApi/assets/5511718/ded55af9-ef13-496a-b640-2efb664f9c21)
+
 
 이와 같이 REST Client 확장을 사용하면 `.http` 파일에서 작성한 HTTP 요청을 간편하게 실행하고, 응답을 바로 확인할 수 있습니다.
 
