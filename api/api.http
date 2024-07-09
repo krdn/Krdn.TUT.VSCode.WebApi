@@ -1,6 +1,20 @@
-@Krdn.TUT.VSCode.WebApi_HostAddress = http://localhost:5166
+@api_HostAddress = http://localhost:5166
 
-GET {{Krdn.TUT.VSCode.WebApi_HostAddress}}/weatherforecast/
+### Get stocks
+GET {{api_HostAddress}}/api/stock
 Accept: application/json
 
-###
+
+### Get stock by id
+GET {{api_HostAddress}}/api/stock/1
+Accept: application/json
+
+
+### Get stock by id
+# GET {{api_HostAddress}}/weatherforecast/
+# Accept: application/json
+
+
+
+
+
