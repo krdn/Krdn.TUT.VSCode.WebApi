@@ -11,8 +11,8 @@ Accept: application/json
 
 
 ### Get stock by id
-# GET {{api_HostAddress}}/weatherforecast/
-# Accept: application/json
+GET {{api_HostAddress}}/weatherforecast/
+Accept: application/json
 
 
 
