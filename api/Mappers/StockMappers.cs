@@ -31,5 +31,19 @@ namespace api.Mappers
                 MarketCap = stockModel.MarketCap
             };
         }
+
+        // 확장 메서드를 사용하여 CreateStockRequestDto를 Stock Entity로 변환합니다.
+        public static Stock ToStockFromCreateDto(this CreateStockRequestDto stockDto)
+        {
+            return new Stock
+            {
+                Symbol = stockDto.Symbol,
+                CompanyName = stockDto.CompanyName,
+                Purchase = stockDto.Purchase,
+                LastDiv = stockDto.LastDiv,
+                Industry = stockDto.Industry,
+                MarketCap = stockDto.MarketCap
+            };
+        }
     }
 }
