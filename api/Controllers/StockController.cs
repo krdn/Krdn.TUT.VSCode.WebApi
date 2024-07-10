@@ -34,7 +34,7 @@ namespace api.Controllers
             var stocks = await _stockRepository.GetAllAsync();
 
             var stockDtos = stocks.Select(stock => stock.ToStockDto());
-      
+
             return Ok(stocks);
         }
 
@@ -74,7 +74,7 @@ namespace api.Controllers
         // [Route("{id}")]
         public async Task<IActionResult> Delete([FromRoute] int id)
         {
-            var stockModel = await  _stockRepository.DeleteAsync(id);
+            var stockModel = await _stockRepository.DeleteAsync(id);
             if (stockModel == null)
             {
                 return NotFound();
