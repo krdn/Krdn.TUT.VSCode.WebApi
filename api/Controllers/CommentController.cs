@@ -30,6 +30,17 @@ namespace api.Controllers
 
             return Ok(commentDtos);
         }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetById([FromRoute] int id)
+        {
+            var comment = await _commentRepository.GetByIdAsync(id);
+            if (comment is null)
+            {
+                return NotFound();
+            }
+            return Ok(comment.ToCommentDto());
+        }
         
     }
 }
