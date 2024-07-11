@@ -2,6 +2,10 @@
 
 https://www.youtube.com/playlist?list=PL82C6-O4XrHfrGOCPmKmwTO7M0avXyQKc
 
+[.NET 코어 웹 API의 기존 "N-Layer" 아키텍처](https://www.linkedin.com/pulse/traditional-n-layer-architecture-net-core-web-api-tiromika-yasasvi/)
+
+
+
 
 ## [ASP.NET Core에 대한 .NET 핫 다시 로드 지원](https://learn.microsoft.com/ko-kr/aspnet/core/test/hot-reload?view=aspnetcore-8.0)
 ```
