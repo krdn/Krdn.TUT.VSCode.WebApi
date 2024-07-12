@@ -1,1 +1,8 @@
-{}
+{
+  "gitlens.ai.experimental.vscode.model": "copilot:gpt-4-turbo",
+  "github.copilot.advanced": {},
+  "intellicode-completions-cdk.runAlongsideCopilot": true,
+  "github.copilot.chat.scopeSelection": true,
+  "github.copilot.chat.localeOverride": "ko",
+  "pieces.language": "ko",
+}
