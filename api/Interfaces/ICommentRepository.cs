@@ -5,14 +5,13 @@ using System.Threading.Tasks;
 
 using api.Models;
 
-namespace api.Interfaces
+namespace api.Interfaces;
+
+public interface ICommentRepository
 {
-    public interface ICommentRepository
-    {
-        Task<Comment> CreateAsync(Comment commentModel);
-        Task<List<Comment>> GetAllAsync();
-        Task<Comment?> GetByIdAsync(int id);
-        Task<Comment?> UpdateAsync(int id, Comment commentModel);
-        Task<Comment?> DeleteAsync(int id);
-    }
+    Task<Comment> CreateAsync(Comment commentModel);
+    Task<List<Comment>> GetAllAsync();
+    Task<Comment?> GetByIdAsync(int id);
+    Task<Comment?> UpdateAsync(int id, Comment commentModel);
+    Task<Comment?> DeleteAsync(int id);
 }

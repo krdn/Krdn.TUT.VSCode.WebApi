@@ -111,3 +111,23 @@ curl -X POST https://localhost:5001/api/items -H "Content-Type: application/json
 ```
 
 이 방법을 사용하면 명령 줄에서 직접 API를 테스트할 수 있습니다.
+
+
+## CRUD 코드 생성
+1. Controller 에 메소드 작성
+2. Controller에서 사용할 Repository 메소드 생성하기
+    Repository Interface 에 메소드 추가
+    Repository Interface 메소드 구현
+       메소드에 Dto가 필요하다면 
+
+   
+```mermaid
+
+flowchart TD
+    A[TestController 메소드 생성] -- Method 추가 --> B1[ITestRepository] 
+    B1 -- Method 구현-->  B2[TestRepository]
+    B2 --> C{Use DTO}
+ 
+
+
+```

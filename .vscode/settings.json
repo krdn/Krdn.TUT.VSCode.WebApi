@@ -1,8 +1,34 @@
 {
   "gitlens.ai.experimental.vscode.model": "copilot:gpt-4-turbo",
-  "github.copilot.advanced": {},
   "intellicode-completions-cdk.runAlongsideCopilot": true,
   "github.copilot.chat.scopeSelection": true,
   "github.copilot.chat.localeOverride": "ko",
-  "pieces.language": "ko",
+
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "always",
+    "source.fixAll.stylelint": "always"
+  },
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+
+  "files.trimTrailingWhitespace": true,
+  "files.trimFinalNewlines": true,
+  "files.insertFinalNewline": true,
+  "[csharp]": {
+    "files.autoSave": "onFocusChange",
+    // "files.trimTrailingWhitespace": true,
+    // "files.trimFinalNewlines": true,
+    // "files.insertFinalNewline": true,
+    // "files.trimTrailingWhitespaceInRegexAndStrings": true,
+    "editor.defaultFormatter": "ms-dotnettools.csharp",
+    // "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.fixAll.dotnet-format": "always"
+    },
+    "editor.autoIndent": "full",
+    "editor.tabSize": 40,
+    "editor.insertSpaces": true,
+    "editor.detectIndentation": true,
+    "editor.wordWrap": "off"
+  }
 }
