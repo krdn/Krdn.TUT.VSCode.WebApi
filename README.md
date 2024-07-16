@@ -120,9 +120,14 @@ curl -X POST https://localhost:5001/api/items -H "Content-Type: application/json
 
 flowchart TD
     A[TestController 메소드 생성] -- Method 추가 --> B1[ITestRepository]
-    B1 -- Method 구현-->  B2[TestRepository]
+
+    B2[TestRepository] -.-> B1
+
+    Progrma.cs
+
     B2 --> C{Use DTO}
-
-
+    subgraph dto
+    C --> D[Test]
+    end
 
 ```
