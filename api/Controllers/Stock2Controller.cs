@@ -14,6 +14,7 @@ namespace api.Controllers;
 
 /// <summary>
 /// Service와 Repository를 사용하는 Controller
+/// https://velog.io/@yarogono/ASP.NET-Core-Service-Repository-%ED%8C%A8%ED%84%B4-%EC%A0%81%EC%9A%A9%ED%95%B4%EC%84%9C-Controller-%EC%BD%94%EB%93%9C-%EB%B6%84%EB%A6%AC%ED%95%98%EA%B8%B0
 /// </summary>
 [ApiController]
 [Route("api/[controller]")]
@@ -34,4 +35,54 @@ public class Stock2Controller : ControllerBase
 
         return Ok(stockDtos);
     }
+
+    [HttpGet("{id}")]
+    public async Task<IActionResult> GetById([FromRoute] int id)
+    {
+        var stockModel = await _stock2Service.GetByIdAsync(id);
+        if (stockModel is null)
+        {
+            return NotFound();
+        }
+        return Ok(stockModel.ToStockDto());
+
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> Create([FromBody] CreateStockRequestDto stockDto)
+    {
+        var stockModel = stockDto.ToStockFromCreateDto();
+        await _stock2Service.CreateAsync(stockModel);
+
+        return CreatedAtAction(nameof(GetById), new { id = stockModel.Id }, stockModel.ToStockDto());
+
+    }
+
+    [HttpPut("{id}")]
+    public async Task<IActionResult> Update([FromRoute] int id, [FromBody] UpdateStockRequestDto updateStockDto)
+    {
+        var stockModel = await _stock2Service.UpdateAsync(id, updateStockDto);
+        if (stockModel is null)
+        {
+            return NotFound();
+        }
+
+        return Ok(stockModel.ToStockDto());
+    }
+
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> Delete([FromRoute] int id)
+    {
+        var stockModel = await _stock2Service.DeleteAsync(id);
+        if (stockModel is null)
+        {
+            return NotFound();
+        }
+
+        return Ok(stockModel.ToStockDto());
+    }
+
+
+
+
 }

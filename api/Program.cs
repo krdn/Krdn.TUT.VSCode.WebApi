@@ -11,7 +11,18 @@ builder.Services.AddControllers();
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(options =>
+{
+    // https://learn.microsoft.com/ko-kr/aspnet/core/tutorials/getting-started-with-swashbuckle?view=aspnetcore-8.0&tabs=visual-studio#add-and-configure-swagger-middleware
+    // Swagger 문서를 생성할 때 사용할 정보를 추가합니다.
+    // Swashbuckle을 추가 하면 Swagger 문서를 생성할 수 있습니다.
+    options.SwaggerDoc("v1", new()
+    {
+        Title = "Web API .NET 8 2024",
+        Description = "VSCode를 사용하여 구축한 ASP.NET Core Web API",
+        Version = "v1"
+    });
+});
 
 builder.Services.AddControllers().AddNewtonsoftJson(options =>
     options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
