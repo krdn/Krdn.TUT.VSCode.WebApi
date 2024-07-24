@@ -30,15 +30,25 @@ public class Stock2Controller : ControllerBase
     [HttpGet]
     public async Task<IActionResult> GetAll()
     {
+        if (!ModelState.IsValid)
+        {
+            return BadRequest(ModelState);
+        }
+
         var stocks = await _stock2Service.GetAllAsync();
         var stockDtos = stocks.Select(stock => stock.ToStockDto());
 
         return Ok(stockDtos);
     }
 
-    [HttpGet("{id}")]
+    [HttpGet("{id:int}")]
     public async Task<IActionResult> GetById([FromRoute] int id)
     {
+        if (!ModelState.IsValid)
+        {
+            return BadRequest(ModelState);
+        }
+
         var stockModel = await _stock2Service.GetByIdAsync(id);
         if (stockModel is null)
         {
@@ -51,6 +61,11 @@ public class Stock2Controller : ControllerBase
     [HttpPost]
     public async Task<IActionResult> Create([FromBody] CreateStockRequestDto stockDto)
     {
+        if (!ModelState.IsValid)
+        {
+            return BadRequest(ModelState);
+        }
+
         var stockModel = stockDto.ToStockFromCreateDto();
         await _stock2Service.CreateAsync(stockModel);
 
@@ -58,9 +73,14 @@ public class Stock2Controller : ControllerBase
 
     }
 
-    [HttpPut("{id}")]
+    [HttpPut("{id:int}")]
     public async Task<IActionResult> Update([FromRoute] int id, [FromBody] UpdateStockRequestDto updateStockDto)
     {
+        if (!ModelState.IsValid)
+        {
+            return BadRequest(ModelState);
+        }
+
         var stockModel = await _stock2Service.UpdateAsync(id, updateStockDto);
         if (stockModel is null)
         {
@@ -70,9 +90,14 @@ public class Stock2Controller : ControllerBase
         return Ok(stockModel.ToStockDto());
     }
 
-    [HttpDelete("{id}")]
+    [HttpDelete("{id:int}")]
     public async Task<IActionResult> Delete([FromRoute] int id)
     {
+        if (!ModelState.IsValid)
+        {
+            return BadRequest(ModelState);
+        }
+
         var stockModel = await _stock2Service.DeleteAsync(id);
         if (stockModel is null)
         {
