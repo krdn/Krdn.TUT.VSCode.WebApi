@@ -1,9 +1,14 @@
 using api.Configuration;
 using api.Data;
 using api.Interfaces;
+using api.Models;
 using api.Repository;
 using api.Services;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -33,6 +38,44 @@ builder.Services.AddDbContext<ApplicationDBContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 
+builder.Services.AddIdentity<AppUser, IdentityRole>(
+        options =>
+        {
+            options.Password.RequireDigit = true;
+            options.Password.RequireLowercase = true;
+            options.Password.RequireNonAlphanumeric = true;
+            options.Password.RequireUppercase = true;
+            options.Password.RequiredLength = 12;
+            // options.User.RequireUniqueEmail = true;
+        }
+    )
+    .AddEntityFrameworkStores<ApplicationDBContext>();
+
+builder.Services.AddAuthentication(option =>
+{
+    option.DefaultAuthenticateScheme =
+    option.DefaultChallengeScheme =
+    option.DefaultForbidScheme =
+    option.DefaultScheme =
+    option.DefaultSignInScheme =
+    option.DefaultSignOutScheme = JwtBearerDefaults.AuthenticationScheme;
+}).AddJwtBearer(options =>
+{
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuer = true,
+        ValidateAudience = true,
+        ValidateLifetime = true,
+        ValidateIssuerSigningKey = true,
+        ValidIssuer = builder.Configuration["Jwt:Issuer"],
+        ValidAudience = builder.Configuration["Jwt:Audience"],
+        IssuerSigningKey = new SymmetricSecurityKey(
+            Encoding.UTF8.GetBytes(builder.Configuration["Jwt:SigningKey"])
+            )
+    };
+});
+
+
 builder.Services.AddCoreServices(builder.Configuration);
 
 builder.Services.AddScoped<IStock2Repository, Stock2Repository>();
@@ -49,6 +92,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseAuthentication();
+app.UseAuthorization();
 
 app.MapControllers();
 
