@@ -81,6 +81,7 @@ builder.Services.AddCoreServices(builder.Configuration);
 builder.Services.AddScoped<IStock2Repository, Stock2Repository>();
 builder.Services.AddScoped<IStockRepository, StockRepository>();
 builder.Services.AddScoped<ICommentRepository, CommentRepository>();
+builder.Services.AddScoped<ITokenService, TokenService>();
 
 var app = builder.Build();
 
