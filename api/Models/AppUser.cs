@@ -8,6 +8,7 @@ namespace api.Models
 {
     public class AppUser : IdentityUser
     {
-
+        // Portfolio 모델과 1:N 관계
+        public List<Portfolio> Portfolios { get; set; } = new List<Portfolio>();
     }
 }
