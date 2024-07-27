@@ -19,9 +19,9 @@ public class Stock
     public string Industry { get; set; } = string.Empty;
     public long MarketCap { get; set; }
 
-    public List<Comment> Comments { get; set; } = new List<Comment>();
+    public List<Comment> Comments { get; set; } = [];
 
     // Portfolio 모델과 N:1 관계
-    public List<Portfolio> Portfolios { get; set; } = new List<Portfolio>();
+    public List<Portfolio> Portfolios { get; set; } = [];
 
 }
