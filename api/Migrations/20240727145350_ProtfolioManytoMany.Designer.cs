@@ -12,7 +12,7 @@ using api.Data;
 namespace api.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    [Migration("20240727134006_ProtfolioManytoMany")]
+    [Migration("20240727145350_ProtfolioManytoMany")]
     partial class ProtfolioManytoMany
     {
         /// <inheritdoc />
@@ -54,13 +54,13 @@ namespace api.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "d1b84dc4-48a8-4587-aebe-9139b373d738",
+                            Id = "4205ea95-d0f5-4915-90e9-d9b5e13130ac",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "74878ef0-4337-4685-aa37-11a6fcbcb303",
+                            Id = "3ba6e371-18cd-4ae2-b121-5be8e34fcf34",
                             Name = "User",
                             NormalizedName = "USER"
                         });
