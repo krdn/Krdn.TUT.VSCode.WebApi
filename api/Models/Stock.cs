@@ -6,6 +6,12 @@ using System.Threading.Tasks;
 
 namespace api.Models;
 
+/// <summary>
+/// 주식 모델
+/// </summary>
+/// <remarks>
+/// 주식 정보를 담는 모델
+/// </remarks>
 [Table("Stocks")]
 public class Stock
 {
@@ -21,7 +27,6 @@ public class Stock
 
     public List<Comment> Comments { get; set; } = [];
 
-    // Portfolio 모델과 N:1 관계
     public List<Portfolio> Portfolios { get; set; } = [];
 
 }
