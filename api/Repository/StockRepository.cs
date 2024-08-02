@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 
 using api.Data;
 using api.Dtos.Stock;
+using api.Helpers;
 using api.Interfaces;
 using api.Models;
 
@@ -41,10 +42,32 @@ public class StockRepository : IStockRepository
         return stockModel;
     }
 
-    public async Task<List<Stock>> GetAllAsync()
+    public async Task<List<Stock>> GetAllAsync(QueryObject query)
     {
         // Eager Loading(즉시 로딩) - Include Comments with Stock Model : Lazy Loading의 반대 개념
-        return await _context.Stocks.Include(s => s.Comments).ToListAsync();
+        var stocks = _context.Stocks.Include(s => s.Comments).AsQueryable();
+
+        if (!string.IsNullOrWhiteSpace(query.CompanyName))
+        {
+            stocks = stocks.Where(s => s.CompanyName.Contains(query.CompanyName));
+        }
+
+        if (!string.IsNullOrWhiteSpace(query.Symbol))
+        {
+            stocks = stocks.Where(s => s.Symbol.Contains(query.Symbol));
+        }
+
+        if (!string.IsNullOrWhiteSpace(query.SortBy))
+        {
+            if (query.SortBy.Equals("Symbol", StringComparison.OrdinalIgnoreCase))
+            {
+                stocks = query.IsDescending ? stocks.OrderByDescending(s => s.Symbol) : stocks.OrderBy(s => s.Symbol);
+            }
+        }
+
+        var skipNumber = (query.PageNumber - 1) + query.PageSize;
+
+        return await stocks.Skip(skipNumber).Take(query.PageSize).ToListAsync();
     }
 
     public async Task<Stock?> GetByIdAsync(int id)
