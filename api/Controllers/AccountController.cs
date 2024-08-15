@@ -26,6 +26,21 @@ namespace api.Controllers
             _signInManager = signInManager;
         }
 
+        [HttpGet("generate")]
+        public async Task<IActionResult> GenerateToken()
+        {
+            // JWT 토큰을 생성하는 로직을 여기에 추가합니다.
+            // 예를 들어, 사용자의 인증 정보를 바탕으로 토큰을 생성합니다.
+
+            var user = await _userManager.Users.FirstOrDefaultAsync(x => x.UserName == "test01");
+
+
+            //var token = "your-jwt-token-here"; // 실제 JWT 토큰 생성 로직을 구현해야 합니다.
+            var token = _tokenService.CreateToken(user);
+
+            return Ok(token);
+        }
+
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] LoginDto loginDto)
         {

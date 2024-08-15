@@ -111,7 +111,15 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI();
+    // app.UseSwaggerUI();
+    app.UseSwaggerUI(c =>
+      {
+          c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+          //   c.RoutePrefix = string.Empty; // Swagger UI를 루트 경로에 노출
+
+          // Customize Swagger UI with additional JavaScript to auto-set the Bearer token
+          c.InjectJavascript("/swagger-ui/custom-swagger-ui.js");
+      });
 }
 
 app.UseHttpsRedirection();

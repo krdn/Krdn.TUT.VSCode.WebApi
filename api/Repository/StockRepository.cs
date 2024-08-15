@@ -65,7 +65,7 @@ public class StockRepository : IStockRepository
             }
         }
 
-        var skipNumber = (query.PageNumber - 1) + query.PageSize;
+        var skipNumber = (query.PageNumber - 1) * query.PageSize;
 
         return await stocks.Skip(skipNumber).Take(query.PageSize).ToListAsync();
     }
@@ -73,6 +73,11 @@ public class StockRepository : IStockRepository
     public async Task<Stock?> GetByIdAsync(int id)
     {
         return await _context.Stocks.Include(s => s.Comments).FirstOrDefaultAsync(s => s.Id == id);
+    }
+
+    public async Task<Stock?> GetStockBySymbol(string symbol)
+    {
+        return await _context.Stocks.FirstOrDefaultAsync(s => s.Symbol == symbol);
     }
 
     public Task<bool> StockExistsAsync(int id)

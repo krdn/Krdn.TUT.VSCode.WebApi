@@ -14,10 +14,10 @@ namespace api.Models
     [Table("Portfolios")]
     public class Portfolio
     {
-        public required string AppUserId { get; set; }
+        public string AppUserId { get; set; }
         public int StockId { get; set; }
-        public required AppUser AppUser { get; set; }
-        public required Stock Stock { get; set; }
+        public AppUser AppUser { get; set; }
+        public Stock Stock { get; set; }
 
     }
 }
