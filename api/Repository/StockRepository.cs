@@ -45,7 +45,7 @@ public class StockRepository : IStockRepository
     public async Task<List<Stock>> GetAllAsync(QueryObject query)
     {
         // Eager Loading(즉시 로딩) - Include Comments with Stock Model : Lazy Loading의 반대 개념
-        var stocks = _context.Stocks.Include(s => s.Comments).AsQueryable();
+        var stocks = _context.Stocks.Include(s => s.Comments).ThenInclude(a => a.AppUser).AsQueryable();
 
         if (!string.IsNullOrWhiteSpace(query.CompanyName))
         {

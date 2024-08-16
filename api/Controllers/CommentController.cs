@@ -4,9 +4,11 @@ using System.Linq;
 using System.Threading.Tasks;
 
 using api.Dtos.Comment;
+using api.Extensions;
 using api.Interfaces;
 using api.Mappers;
-
+using api.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace api.Controllers;
@@ -17,11 +19,13 @@ public class CommentController : ControllerBase
 {
     private readonly ICommentRepository _commentRepository;
     private readonly IStockRepository _stockRepository;
+    private readonly UserManager<AppUser> _userManager;
 
-    public CommentController(ICommentRepository commentRepository, IStockRepository stockRepository)
+    public CommentController(ICommentRepository commentRepository, IStockRepository stockRepository, UserManager<AppUser> userManager)
     {
         _commentRepository = commentRepository;
         _stockRepository = stockRepository;
+        _userManager = userManager;
     }
 
     [HttpGet]
@@ -68,7 +72,12 @@ public class CommentController : ControllerBase
             return BadRequest("Stock not found");
         }
 
+        var username = User.GetUserName();
+        var appUser = await _userManager.FindByNameAsync(username);
+
         var commentModel = commentDto.ToCommentFromCreate(stockId);
+        commentModel.AppUserId = appUser.Id;
+
         await _commentRepository.CreateAsync(commentModel);
 
         return CreatedAtAction(nameof(GetById), new { id = commentModel.Id }, commentModel.ToCommentDto());

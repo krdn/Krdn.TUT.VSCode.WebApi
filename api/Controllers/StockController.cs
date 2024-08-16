@@ -29,7 +29,7 @@ public class StockController : ControllerBase
         _stockRepository = stockRepository;
     }
 
-    [HttpGet]
+    [HttpGet(Name = "Stock")]
     [Authorize]
     public async Task<IActionResult> GetAll([FromQuery] QueryObject query)
     {
@@ -40,9 +40,9 @@ public class StockController : ControllerBase
 
         var stocks = await _stockRepository.GetAllAsync(query);
 
-        var stockDtos = stocks.Select(stock => stock.ToStockDto());
+        var stockDtos = stocks.Select(stock => stock.ToStockDto()).ToList();
 
-        return Ok(stocks);
+        return Ok(stockDtos);
     }
 
     [HttpGet("{id:int}")]
