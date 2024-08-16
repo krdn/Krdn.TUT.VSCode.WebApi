@@ -2,45 +2,41 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
-using api.Data;
-using api.Dtos.Stock;
-using api.Helpers;
 using api.Interfaces;
-using api.Mappers;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
+using api.Data;
+using api.Dtos.Stock;
+using api.Mappers;
+
 namespace api.Controllers;
 
-[Route("api/[controller]")] // [Route("api/stock")]
+/// <summary>
+/// Service와 Repository를 사용하는 Controller
+/// https://velog.io/@yarogono/ASP.NET-Core-Service-Repository-%ED%8C%A8%ED%84%B4-%EC%A0%81%EC%9A%A9%ED%95%B4%EC%84%9C-Controller-%EC%BD%94%EB%93%9C-%EB%B6%84%EB%A6%AC%ED%95%98%EA%B8%B0
+/// </summary>
 [ApiController]
-public class StockController : ControllerBase
+[Route("api/[controller]")]
+public class Stock2Controller : ControllerBase
 {
-    // stock list, stock details, stock add, stock update, stock delete
+    private readonly IStock2Service _stock2Service;
 
-    private readonly ApplicationDBContext _context;
-    private readonly IStockRepository _stockRepository;
-
-    public StockController(ApplicationDBContext context, IStockRepository stockRepository)
+    public Stock2Controller(IStock2Service stock2Service)
     {
-        _context = context;
-        _stockRepository = stockRepository;
+        _stock2Service = stock2Service;
     }
 
-    [HttpGet(Name = "Stock")]
-    [Authorize]
-    public async Task<IActionResult> GetAll([FromQuery] QueryObject query)
+    [HttpGet]
+    public async Task<IActionResult> GetAll()
     {
         if (!ModelState.IsValid)
         {
             return BadRequest(ModelState);
         }
 
-        var stocks = await _stockRepository.GetAllAsync(query);
-
-        var stockDtos = stocks.Select(stock => stock.ToStockDto()).ToList();
+        var stocks = await _stock2Service.GetAllAsync();
+        var stockDtos = stocks.Select(stock => stock.ToStockDto());
 
         return Ok(stockDtos);
     }
@@ -52,12 +48,14 @@ public class StockController : ControllerBase
         {
             return BadRequest(ModelState);
         }
-        var stock = await _stockRepository.GetByIdAsync(id);
-        if (stock is null)
+
+        var stockModel = await _stock2Service.GetByIdAsync(id);
+        if (stockModel is null)
         {
             return NotFound();
         }
-        return Ok(stock.ToStockDto());
+        return Ok(stockModel.ToStockDto());
+
     }
 
     [HttpPost]
@@ -67,10 +65,12 @@ public class StockController : ControllerBase
         {
             return BadRequest(ModelState);
         }
+
         var stockModel = stockDto.ToStockFromCreateDto();
-        await _stockRepository.CreateAsync(stockModel);
+        await _stock2Service.CreateAsync(stockModel);
 
         return CreatedAtAction(nameof(GetById), new { id = stockModel.Id }, stockModel.ToStockDto());
+
     }
 
     [HttpPut("{id:int}")]
@@ -80,8 +80,9 @@ public class StockController : ControllerBase
         {
             return BadRequest(ModelState);
         }
-        var stockModel = await _stockRepository.UpdateAsync(id, updateStockDto);
-        if (stockModel == null)
+
+        var stockModel = await _stock2Service.UpdateAsync(id, updateStockDto);
+        if (stockModel is null)
         {
             return NotFound();
         }
@@ -90,21 +91,23 @@ public class StockController : ControllerBase
     }
 
     [HttpDelete("{id:int}")]
-    // [Route("{id}")]
     public async Task<IActionResult> Delete([FromRoute] int id)
     {
         if (!ModelState.IsValid)
         {
             return BadRequest(ModelState);
         }
-        var stockModel = await _stockRepository.DeleteAsync(id);
-        if (stockModel == null)
+
+        var stockModel = await _stock2Service.DeleteAsync(id);
+        if (stockModel is null)
         {
             return NotFound();
         }
 
-        return NoContent(); // 204
+        return Ok(stockModel.ToStockDto());
     }
+
+
 
 
 }
