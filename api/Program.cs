@@ -29,7 +29,9 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.UseMiddleware<MockDataMiddleware>();
+    //app.UseMiddleware<MockDataMiddleware>();
+    app.UseMiddleware<MockDataMiddleware2>();
+
 
     app.UseSwagger();
     app.UseSwaggerUI();

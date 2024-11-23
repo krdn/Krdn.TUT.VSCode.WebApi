@@ -3,20 +3,24 @@
   "WorkspaceRootPath": "D:\\02.Tutorials\\05.REST API\\Krdn.TUT.VSCode.WebApi\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{FDFE2CD0-CE83-4BD9-B0E2-63548BB429BE}|api\\api.csproj|d:\\02.tutorials\\05.rest api\\krdn.tut.vscode.webapi\\api\\controllers\\commentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FDFE2CD0-CE83-4BD9-B0E2-63548BB429BE}|api\\api.csproj|solutionrelative:api\\controllers\\commentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{FDFE2CD0-CE83-4BD9-B0E2-63548BB429BE}|api\\api.csproj|d:\\02.tutorials\\05.rest api\\krdn.tut.vscode.webapi\\api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FDFE2CD0-CE83-4BD9-B0E2-63548BB429BE}|api\\api.csproj|solutionrelative:api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{FDFE2CD0-CE83-4BD9-B0E2-63548BB429BE}|api\\api.csproj|d:\\02.tutorials\\05.rest api\\krdn.tut.vscode.webapi\\api\\controllers\\stockcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FDFE2CD0-CE83-4BD9-B0E2-63548BB429BE}|api\\api.csproj|solutionrelative:api\\controllers\\stockcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{FDFE2CD0-CE83-4BD9-B0E2-63548BB429BE}|api\\api.csproj|d:\\02.tutorials\\05.rest api\\krdn.tut.vscode.webapi\\api\\mockdatamiddleware2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FDFE2CD0-CE83-4BD9-B0E2-63548BB429BE}|api\\api.csproj|solutionrelative:api\\mockdatamiddleware2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{FDFE2CD0-CE83-4BD9-B0E2-63548BB429BE}|api\\api.csproj|d:\\02.tutorials\\05.rest api\\krdn.tut.vscode.webapi\\api\\mockdatamiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{FDFE2CD0-CE83-4BD9-B0E2-63548BB429BE}|api\\api.csproj|solutionrelative:api\\mockdatamiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{FDFE2CD0-CE83-4BD9-B0E2-63548BB429BE}|api\\api.csproj|d:\\02.tutorials\\05.rest api\\krdn.tut.vscode.webapi\\api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FDFE2CD0-CE83-4BD9-B0E2-63548BB429BE}|api\\api.csproj|solutionrelative:api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{FDFE2CD0-CE83-4BD9-B0E2-63548BB429BE}|api\\api.csproj|d:\\02.tutorials\\05.rest api\\krdn.tut.vscode.webapi\\api\\controllers\\commentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FDFE2CD0-CE83-4BD9-B0E2-63548BB429BE}|api\\api.csproj|solutionrelative:api\\controllers\\commentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FDFE2CD0-CE83-4BD9-B0E2-63548BB429BE}|api\\api.csproj|d:\\02.tutorials\\05.rest api\\krdn.tut.vscode.webapi\\api\\controllers\\stockcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FDFE2CD0-CE83-4BD9-B0E2-63548BB429BE}|api\\api.csproj|solutionrelative:api\\controllers\\stockcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,7 +30,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -38,7 +42,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "CommentController.cs",
               "DocumentMoniker": "D:\\02.Tutorials\\05.REST API\\Krdn.TUT.VSCode.WebApi\\api\\Controllers\\CommentController.cs",
               "RelativeDocumentMoniker": "api\\Controllers\\CommentController.cs",
@@ -51,7 +55,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "StockController.cs",
               "DocumentMoniker": "D:\\02.Tutorials\\05.REST API\\Krdn.TUT.VSCode.WebApi\\api\\Controllers\\StockController.cs",
               "RelativeDocumentMoniker": "api\\Controllers\\StockController.cs",
@@ -59,18 +63,17 @@
               "RelativeToolTip": "api\\Controllers\\StockController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-23T12:43:49.431Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-23T12:43:49.431Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\02.Tutorials\\05.REST API\\Krdn.TUT.VSCode.WebApi\\api\\Program.cs",
               "RelativeDocumentMoniker": "api\\Program.cs",
               "ToolTip": "D:\\02.Tutorials\\05.REST API\\Krdn.TUT.VSCode.WebApi\\api\\Program.cs",
               "RelativeToolTip": "api\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-23T12:44:45.015Z",
               "EditorCaption": ""
@@ -86,6 +89,19 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAxAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-23T13:24:44.248Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MockDataMiddleware2.cs",
+              "DocumentMoniker": "D:\\02.Tutorials\\05.REST API\\Krdn.TUT.VSCode.WebApi\\api\\MockDataMiddleware2.cs",
+              "RelativeDocumentMoniker": "api\\MockDataMiddleware2.cs",
+              "ToolTip": "D:\\02.Tutorials\\05.REST API\\Krdn.TUT.VSCode.WebApi\\api\\MockDataMiddleware2.cs",
+              "RelativeToolTip": "api\\MockDataMiddleware2.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-23T14:05:38.924Z",
               "EditorCaption": ""
             }
           ]
