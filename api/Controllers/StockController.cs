@@ -29,6 +29,7 @@ public class StockController : ControllerBase
     }
 
     [HttpGet]
+    [ProducesResponseType(typeof(StockDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetAll()
     {
         var stocks = await _stockRepository.GetAllAsync();

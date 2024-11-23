@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 
 using api.Dtos.Comment;
+using api.Dtos.Stock;
+using api.Dtos.Stock.Comment;
 using api.Interfaces;
 using api.Mappers;
 
@@ -25,6 +27,7 @@ public class CommentController : ControllerBase
     }
 
     [HttpGet]
+    [ProducesResponseType(typeof(CommentDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetAll()
     {
         var comments = await _commentRepository.GetAllAsync();
