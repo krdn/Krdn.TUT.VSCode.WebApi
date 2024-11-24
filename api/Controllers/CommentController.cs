@@ -8,7 +8,7 @@ using api.Dtos.Stock;
 using api.Dtos.Stock.Comment;
 using api.Interfaces;
 using api.Mappers;
-
+using api.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace api.Controllers;
@@ -38,6 +38,7 @@ public class CommentController : ControllerBase
     }
 
     [HttpGet("{id}")]
+    [ProducesResponseType(typeof(CommentDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetById([FromRoute] int id)
     {
         var comment = await _commentRepository.GetByIdAsync(id);
@@ -63,6 +64,7 @@ public class CommentController : ControllerBase
     }
 
     [HttpPut("{id}")]
+    [ProducesResponseType(typeof(CommentDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> Update([FromRoute] int id, [FromBody] UpdateCommentRequestDto updateDto)
     {
         var commentModel = await _commentRepository.UpdateAsync(id, updateDto.ToCommentFromUpdate());
@@ -76,6 +78,7 @@ public class CommentController : ControllerBase
     }
 
     [HttpDelete("{id}")]
+    [ProducesResponseType(typeof(Comment), StatusCodes.Status200OK)]
     public async Task<IActionResult> Delete([FromRoute] int id)
     {
         var commentModel = await _commentRepository.DeleteAsync(id);

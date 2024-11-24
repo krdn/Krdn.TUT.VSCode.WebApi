@@ -7,7 +7,7 @@ using api.Data;
 using api.Dtos.Stock;
 using api.Interfaces;
 using api.Mappers;
-
+using api.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -40,6 +40,7 @@ public class StockController : ControllerBase
     }
 
     [HttpGet("{id}")]
+    [ProducesResponseType(typeof(Stock), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetById([FromRoute] int id)
     {
         var stock = await _stockRepository.GetByIdAsync(id);
@@ -60,6 +61,7 @@ public class StockController : ControllerBase
     }
 
     [HttpPut("{id}")]
+    [ProducesResponseType(typeof(StockDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> Update([FromRoute] int id, [FromBody] UpdateStockRequestDto updateStockDto)
     {
         var stockModel = await _stockRepository.UpdateAsync(id, updateStockDto);
